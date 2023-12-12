@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Todo" ALTER COLUMN "createdAt" SET DATA TYPE BIGINT;
+
+-- AlterTable
+ALTER TABLE "TodoItem" ALTER COLUMN "checkedAt" SET DATA TYPE BIGINT;

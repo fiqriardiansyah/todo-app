@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String
+  password String
+  createdAt String?
+  refreshToken String?
+  todos Todo[]
+}
+
+model Todo {
+  id Int @id @default(autoincrement())
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId Int
+  title String
+  description String?
+  createdAt String
+  isDone Boolean @default(false)
+  item TodoItem[]
+  secure Boolean @default(false)
+  password String?
+}
+
+model TodoItem {
+  id Int @id @default(autoincrement())
+  todo Todo @relation(fields: [todoId], references: [id], onDelete: Cascade)
+  todoId Int 
+  description String
+  isChecked Boolean @default(false)
+  checkedAt String?
+}

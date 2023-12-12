@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Todo" ALTER COLUMN "createdAt" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "TodoItem" ALTER COLUMN "checkedAt" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "createdAt" SET DATA TYPE TEXT;
